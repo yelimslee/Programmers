@@ -1,23 +1,24 @@
 T = int(input())
+di = [0, -1, 0, 1]
+dj = [1, 0, -1, 0]
+for test_case in range(1, T+1):
+    N = int(input())
+    arr = [[0] * N for _ in range(N)]
 
-for test_case in range(1, T + 1):
-    n = int(input())
-    dist = [[0, 1], [1, 0], [0, -1], [-1, 0]] # 우, 하, 좌, 상
-    snail = [[0] * n for _ in range(n)] # 0으로 채워진 n*n 빈달팽이 생성
-    num = 1 # 달팽이를 채울 숫자
-    d = 0 # 달팽이 이동방향
-    x, y = 0, -1 # 시작위치
-    while num <= (n*n):
-        nx, ny = x + dist[d][0], y + dist[d][1]
-        if 0 <= nx < n and  0<= ny < n and snail[nx][ny] == 0 :
-            snail[nx][ny] = num # 숫자 넣어주기
-            num += 1 # 숫자 증가
-            x, y = nx, ny # 현재 위치 갱신
-            
-        # 달팽이 크기에서 벗어났거나, 해당 위치에 이미 숫자가 부여되어 있는 경우
-        # k값 조정을 통해 방향을 바꿈
+    i, j, cnt, dr = 0, 0, 1, 0  # 초기화
+    arr[i][j] = cnt
+    cnt += 1
+
+    while cnt <= N*N:
+        ni, nj = i+di[dr], j+dj[dr]
+        if 0 <= ni < N and 0 <= nj < N and arr[ni][nj] == 0:
+            i, j = ni, nj
+            arr[i][j] = cnt
+            cnt += 1
         else:
-            d = (d+1) % 4   # 0, 1, 2, 3 으로만 움직일 수 있게 나머지를 구함
+            dr = (dr+1) % 4
+
     print(f"#{test_case}")
-    for row in snail:
-        print(*row)
+    # 1차원은 리스트, 2차원은 배열
+    for lst in arr:
+        print(*lst)
