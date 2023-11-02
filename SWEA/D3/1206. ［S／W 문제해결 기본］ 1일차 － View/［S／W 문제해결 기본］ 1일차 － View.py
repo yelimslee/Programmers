@@ -1,5 +1,3 @@
-# 좌/우 2칸 최대값 찾음 -> 내 높이가 > 최대값 => 차이만큼 누적
-
 T = 10
 for test_case in range(1, T+1):
     N = int(input())
@@ -15,4 +13,5 @@ for test_case in range(1, T+1):
                     max = lst[j]
         if lst[i] > max:
             ans += lst[i] - max
+    
     print(f"#{test_case} {ans}")
