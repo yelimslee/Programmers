@@ -1,15 +1,11 @@
 T = int(input())
-
-for tc in range(1, T+1):
+divs = [2,3,5,7,11]
+for test_case in range(1, T+1):
     N = int(input())
-
-    num_lst = [2, 3, 5, 7, 11]
-    cnt_lst = [0, 0, 0, 0, 0]
-
+    cnts = [0]*5
     for i in range(5):
-        while N % num_lst[i] == 0:
-            cnt_lst[i] += 1
-            N = N // num_lst[i]
+        while N % divs[i] == 0:
+            cnts[i] += 1
+            N //= divs[i]
 
-    print(f"#{tc}", end=" ")
-    print(*cnt_lst)
+    print(f"#{test_case}", *cnts)
