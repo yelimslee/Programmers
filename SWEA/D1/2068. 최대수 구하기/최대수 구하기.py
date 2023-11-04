@@ -1,5 +1,4 @@
-t = int(input())
-
-for i in range(1, t+1):
-    a = map(int, input().split())
-    print(f"#{i} {max(a)}")
+T = int(input())
+for test_case in range(1, T+1):
+    a = map(int, input().split())  
+    print(f"#{test_case} {max(a)}")
